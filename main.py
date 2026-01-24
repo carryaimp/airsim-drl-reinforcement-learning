@@ -388,7 +388,8 @@ if __name__ == "__main__":
         type=str,
         choices=[
             "test",
-            "plot"
+            "plot",
+            "train"
         ],
         default="train",
     )
