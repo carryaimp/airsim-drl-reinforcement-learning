@@ -374,8 +374,8 @@ class DRLEnvironment(object):
         #print(action)
         #x = np.clip(action[0], -self.max_axis_velocity, self.max_axis_velocity).astype(np.float) 
         #y = np.clip(action[1], -self.max_axis_velocity, self.max_axis_velocity).astype(np.float)
-        x = action[0].astype(np.float) * 1.25 
-        y = action[1].astype(np.float) * 1.25
+        x = action[0].astype(float) * 1.25
+        y = action[1].astype(float) * 1.25
 
         #Read current state of the drone
         drone_state = self.airsim_client_odom.getMultirotorState()                    
