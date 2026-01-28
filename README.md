@@ -79,15 +79,13 @@ Uno de los puntos importantes del modelo de aprendizaje por refuerzo implementad
 3. Descargar el archivo de configuración del entorno de simulación para este proyecto en la carpeta C:\Users\[Usuario]\Documents\AirSim (crear carpeta si no existe): https://raw.githubusercontent.com/AgileCodeCO/airsim-drl-reinforcement-learning/main/environment/settings.json
 
 ### Librerias de python
-
-1. pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
-2. pip install pandas
-3. pip install opencv-python
-4. pip install airsimdroneracinglab
+```bash
+python -m pip install -r requirements.txt
+```
 
 ## Ejecución
 
- 
+
 
 ### Para entrenamiento:
 
@@ -110,6 +108,29 @@ Uno de los puntos importantes del modelo de aprendizaje por refuerzo implementad
 3. Ejecutar el script de python por linea de comandos desde la carpeta donde se clonó el código fuente:
 
     **python .\main.py --mode=test**
+
+##  Linux-Plattform - Ubuntu 20.04
+1. Laden Sie die ausführbare Datei AirSim Drone Racing Lab für Linux herunter：https://github.com/microsoft/AirSim-Drone-Racing-Lab/releases/download/v1.0-linux/ADRL.zip
+```bash
+# Extract the files to the ADRL directory, open a terminal, and then run the following...
+# Download the setting.json file.
+mkdir -p  ~/Documents/AirSim/
+wget https://raw.githubusercontent.com/AgileCodeCO/airsim-drl-reinforcement-learning/main/environment/settings.json -O ~/Documents/AirSim/settings.json
+# Start the emulator
+./ADRL.sh -windowed -NoVSync
+```
+2. Im Containermodus ausführen
+```bash
+# build image
+bash -x build_image.sh
+# Requirements: Start the emulator.
+# Starting containers
+docker run -it  --net host --rm  airsim-drl-reinforcement-learning:v1.0.0  bash
+# Training inside a container
+python main.py --mode=train
+# Testing inside the container
+python main.py --mode=test
+```
 
 # Referencias
 
